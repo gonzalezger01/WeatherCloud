@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { WeatherService} from '../app/weather/weather.service';
+import { WeatherService } from '../app/weather/weather.service';
 
 @Component({
   selector: 'app-root',
@@ -8,9 +8,5 @@ import { WeatherService} from '../app/weather/weather.service';
 })
 export class AppComponent {
   title = 'weatherCloud';
-  constructor(private weather: WeatherService) {}
-
-  getWeather() {
-    this.weather.getWeather();
-  }
+  constructor() {}
 }

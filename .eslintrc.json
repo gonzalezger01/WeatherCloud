@@ -1,0 +1,19 @@
+{
+    "env": {
+        "browser": true,
+    },
+    "extends": [
+        "standard",
+        "plugin:angular/johnpapa"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": 12
+    },
+    "plugins": [
+        "eslint-plugin-angular",
+        "@angular-eslint/eslint-plugin"
+    ],
+    "rules": {
+    }
+}

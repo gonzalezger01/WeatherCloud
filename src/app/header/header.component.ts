@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { WeatherService } from '../weather/weather.service';
+import { LocationData } from '../shared/locationData.model';
 
 @Component({
   selector: 'app-header',
@@ -6,14 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  cityState: string = "Mooselookmeguntic, NY";
-  lat: number = 15.5;
-  long: number = 15.5;
-  userZip = 23232;
-  weatherStation = "RAH";
-  constructor() { }
+  currentLocation: LocationData;
+  constructor(private weatherService: WeatherService) { }
 
   ngOnInit(): void {
   }
 
+  getWeather() {
+    this.weatherService.locationDataSubject.subscribe((locationData: LocationData) => {
+      this.currentLocation = locationData;
+    });
+  }
 }

@@ -1,13 +1,13 @@
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #03dbfc;">
   <a class="navbar-brand" href="#">WeatherCloud</a>
   <div fxHide fxShow.md>
-    <p  class="nav location-info">{{cityState}} {{userZip}} Weather Station:{{weatherStation}}</p>
+    <p  class="nav location-info">{{currentLocation.city}}, {{currentLocation.state}} {{currentLocation.userZip}} Weather Station:{{currentLocation.weatherStation}}</p>
   </div>
   <div fxHide fxShow.sm>
-    <p  class="nav location-info">{{cityState}} {{userZip}}</p>
+    <p  class="nav location-info">{{currentLocation.city}}, {{currentLocation.state}} {{currentLocation.userZip}}</p>
   </div>
   <div fxHide fxShow.xs>
-    <p  class="nav location-info">{{userZip}}, CA</p>
+    <p  class="nav location-info">{{currentLocation.userZip}}, {{currentLocation.state}}</p>
   </div>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
     aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,6 +26,7 @@
       <path fill-rule="evenodd"
         d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
     </svg>
-    <p class="nav location-info"> {{cityState}} {{userZip}} ({{lat}},{{long}}) Weather Station:{{weatherStation}}</p>
+    <p class="nav location-info"> {{currentLocation.city}}, {{currentLocation.state}}{{currentLocation.userZip}} ({{currentLocation.lat}},{{currentLocation.long}}) Weather Station:{{currentLocation.weatherStation}}</p>
   </div>
 </nav>
+<button type="button" class="btn btn-primary" (click)="getWeather()">Get Weather</button>
