@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { WeatherService } from '../weather/weather.service';
-import { LocationData } from '../shared/locationData.model';
+import { WeatherService } from '../services/weather.service';
+import { CONSTANTS } from '../shared/constants';
 
 @Component({
   selector: 'app-header',
@@ -8,15 +8,16 @@ import { LocationData } from '../shared/locationData.model';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  currentLocation: LocationData;
+  zipCode = CONSTANTS.defaultLocations.winstonSalem;
   constructor(private weatherService: WeatherService) { }
 
   ngOnInit(): void {
+    this.getWeather(CONSTANTS.defaultLocations.winstonSalem);
   }
 
-  getWeather() {
-    this.weatherService.locationDataSubject.subscribe((locationData: LocationData) => {
-      this.currentLocation = locationData;
+  getWeather(zipCode?: string) {
+    this.weatherService.getWeather(zipCode).subscribe((weatherApiResponse: any) => {
+      let weatherReponseData = weatherApiResponse;
     });
   }
 }

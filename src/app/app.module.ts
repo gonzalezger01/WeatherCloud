@@ -4,10 +4,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
-import { WeatherService } from './weather/weather.service';
+import { WeatherService } from './services/weather.service';
 import { HeaderComponent } from './header/header.component';
-import { BREAKPOINTS, DEFAULT_BREAKPOINTS, FlexLayoutModule } from '@angular/flex-layout';
-import { CustomBreakPointsProvider } from './shared/custom-breakpoints';
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -16,13 +16,12 @@ import { CustomBreakPointsProvider } from './shared/custom-breakpoints';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     RouterModule.forRoot([]),
-    HttpClientModule,
-    FlexLayoutModule.withConfig({ disableDefaultBps: true })
+    HttpClientModule
   ],
   providers: [
-    WeatherService,
-    CustomBreakPointsProvider
+    WeatherService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,32 +1,17 @@
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #03dbfc;">
-  <a class="navbar-brand" href="#">WeatherCloud</a>
-  <div fxHide fxShow.md>
-    <p  class="nav location-info">{{currentLocation.city}}, {{currentLocation.state}} {{currentLocation.userZip}} Weather Station:{{currentLocation.weatherStation}}</p>
+<div class="header">
+  <h2 class="brand-color weather-cloud-logo col-4" href="#">WeatherCloud</h2>
+  <div class="col-12 weather-menu">
+    <a class="brand-color col-md-2" href="#">Detailed Weather</a>
+    <a class="brand-color col-md-2" href="#">Hourly Weather</a>
+    <a class="brand-color col-md-2" href="#">Alerts</a>
   </div>
-  <div fxHide fxShow.sm>
-    <p  class="nav location-info">{{currentLocation.city}}, {{currentLocation.state}} {{currentLocation.userZip}}</p>
-  </div>
-  <div fxHide fxShow.xs>
-    <p  class="nav location-info">{{currentLocation.userZip}}, {{currentLocation.state}}</p>
-  </div>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav center">
-      <a class="nav-link" href="#">Detailed Weather</a>
-      <a class="nav-link" href="#">Hourly Weather</a>
-      <a class="nav-link" href="#">Alerts</a>
+  <div class="col-12 weather-menu">
+    <p>
+      <label for="zipCode" class="col-sm-3 col-form-label brand-color ">Zipcode: </label>
+    </p>
+    <input [(ngModel)]="zipCode" type="text" class="col-sm-2 col-lg-1 form-control" id="zipCode">
+    <div class="col-sm-4">
+      <button (click)="getWeather(zipCode)"  type="button" class="btn btn-primary">Submit</button>
     </div>
   </div>
-  <div class="row" fxHide fxShow.gt-md>
-    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-geo-alt" fill="currentColor"
-      xmlns="http://www.w3.org/2000/svg">
-      <path fill-rule="evenodd"
-        d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
-    </svg>
-    <p class="nav location-info"> {{currentLocation.city}}, {{currentLocation.state}}{{currentLocation.userZip}} ({{currentLocation.lat}},{{currentLocation.long}}) Weather Station:{{currentLocation.weatherStation}}</p>
-  </div>
-</nav>
-<button type="button" class="btn btn-primary" (click)="getWeather()">Get Weather</button>
+</div>
