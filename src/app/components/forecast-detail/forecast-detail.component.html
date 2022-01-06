@@ -1,0 +1,11 @@
+<div class="col-sm-12 row weather-detail">
+    <img src="{{forecast.icon}}" class="col-sm-2 image-size mobile-display" alt="{{forecast.shortForecast}}">
+    <div class="col-sm-10">
+        <div class="col-sm-12 row mobile-forecast-display">
+            <h3 class="col-sm-6">{{forecast.name}}</h3>
+            <p class="col-sm-6">{{forecast.temperature}} {{forecast.temperatureUnit}}° {{formattedTime}}</p>
+        </div>
+        <p>{{forecast.detailedForecast}}</p>
+    </div>
+
+</div>

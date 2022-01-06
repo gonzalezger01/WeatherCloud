@@ -1,0 +1,23 @@
+.image-size {
+    height: 100%;
+    flex: 0;
+    padding-top: 7px;
+}
+
+.weather-detail {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-right: inherit;
+    padding-left: inherit;
+}
+
+@media only screen and (max-width: 575px) {
+    .mobile-display {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .mobile-forecast-display {
+        text-align: center;
+    }
+  }

@@ -9,15 +9,15 @@ import { CONSTANTS } from '../shared/constants';
 })
 export class HeaderComponent implements OnInit {
   zipCode = CONSTANTS.defaultLocations.winstonSalem;
-  constructor(private weatherService: WeatherService) { }
+  location = '';
+
+  constructor(public weatherService: WeatherService) { }
 
   ngOnInit(): void {
     this.getWeather(CONSTANTS.defaultLocations.winstonSalem);
   }
 
   getWeather(zipCode?: string) {
-    this.weatherService.getWeather(zipCode).subscribe((weatherApiResponse: any) => {
-      let weatherReponseData = weatherApiResponse;
-    });
+    this.weatherService.getWeatherAPI(zipCode);
   }
 }

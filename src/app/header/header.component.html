@@ -9,9 +9,9 @@
     <p>
       <label for="zipCode" class="col-sm-3 col-form-label brand-color ">Zipcode: </label>
     </p>
-    <input [(ngModel)]="zipCode" type="text" class="col-sm-2 col-lg-1 form-control" id="zipCode">
-    <div class="col-sm-4">
-      <button (click)="getWeather(zipCode)"  type="button" class="btn btn-primary">Submit</button>
+    <input [(ngModel)]="zipCode" (keydown.enter)="getWeather($event.target.value)" type="text" class="col-sm-2 col-lg-1 form-control" id="zipCode">
+    <div class="col-sm-2">
+      <button (click)="getWeather(zipCode)" type="button" class="btn btn-primary">Submit</button>
     </div>
   </div>
 </div>
