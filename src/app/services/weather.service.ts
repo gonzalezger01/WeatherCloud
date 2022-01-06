@@ -14,7 +14,7 @@ export class WeatherService {
   weatherApi: WeatherApi = {
     forecast: '',
     hourlyForecast: ''
-  }
+  };
   location: string;
 
   constructor(private http: HttpClient) { }
@@ -38,7 +38,7 @@ export class WeatherService {
         this.weatherApi.hourlyForecast = weatherProperties.forecastHourly;
         this.location = `${weatherProperties.relativeLocation.properties.city}, ${weatherProperties.relativeLocation.properties.state}`;
 
-        this.http.get(this.weatherApi.forecast).subscribe((response: any)=>{
+        this.http.get(this.weatherApi.forecast).subscribe((response: any) => {
           this.handleWeatherResponse(response.properties);
         });
       });
@@ -47,40 +47,40 @@ export class WeatherService {
   private generateHeader(headerDict: any): any {
     return {
       headers: new HttpHeaders(headerDict)
-    }
+    };
   }
 
   private handleWeatherResponse(properties: any): void {
     this.freshestDataTime = properties.generatedAt;
     this.forecast = properties.periods;
   }
-  
+
 }
 
 interface GeographicInfo {
-  awater: number,
-  awater_Sqmi: number,
-  aland_Sqmi: number,
-  geoid: number,
-  aland: number,
-  lat: number,
-  long: number
+  awater: number;
+  awater_Sqmi: number;
+  aland_Sqmi: number;
+  geoid: number;
+  aland: number;
+  lat: number;
+  long: number;
 }
 
 interface WeatherApi {
-  forecast: string,
-  hourlyForecast: string,
+  forecast: string;
+  hourlyForecast: string;
 }
 
 interface Weather {
-  index: number,
-  name: string,
-  isDay: boolean,
-  temperature: string,
-  temperatureUnit: string,
-  windSpeed: string,
-  windDirection: string,
-  icon: string,
-  shortForecast: string,
+  index: number;
+  name: string;
+  isDay: boolean;
+  temperature: string;
+  temperatureUnit: string;
+  windSpeed: string;
+  windDirection: string;
+  icon: string;
+  shortForecast: string;
   detailedForecast: string;
 }

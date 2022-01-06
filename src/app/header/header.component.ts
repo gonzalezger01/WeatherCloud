@@ -17,7 +17,7 @@ export class HeaderComponent implements OnInit {
     this.getWeather(CONSTANTS.defaultLocations.winstonSalem);
   }
 
-  getWeather(zipCode?: string) {
+  getWeather(zipCode?: string): void {
     this.weatherService.getWeatherAPI(zipCode);
   }
 }

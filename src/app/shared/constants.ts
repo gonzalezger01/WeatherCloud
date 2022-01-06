@@ -18,4 +18,4 @@ export const CONSTANTS = {
         }
     },
     errorCorrection : 0.00
-}
+};
