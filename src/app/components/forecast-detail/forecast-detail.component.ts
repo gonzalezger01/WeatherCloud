@@ -1,4 +1,3 @@
-import { formattedError } from '@angular/compiler';
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({

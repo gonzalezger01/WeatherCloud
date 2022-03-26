@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { MainPageComponent } from './main-page/main-page.component';
 import { ForecastDetailComponent } from './components/forecast-detail/forecast-detail.component';
 import { ForecastContainerComponent } from './components/forecast-container/forecast-container.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const routes: Routes = [
   {path: '**', component: MainPageComponent}
@@ -27,7 +28,8 @@ const routes: Routes = [
     BrowserModule,
     FormsModule,
     RouterModule.forRoot(routes),
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
   providers: [
     WeatherService
