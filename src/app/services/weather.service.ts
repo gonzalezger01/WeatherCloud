@@ -10,6 +10,7 @@ import { Time } from '@angular/common';
 export class WeatherService {
   hasDataBeenUpdated = false;
   freshestDataTime: Time;
+  isForecastLoaded = false;
   forecast: Weather[] = [];
   weatherApi: WeatherApi = {
     forecast: '',
@@ -23,9 +24,13 @@ export class WeatherService {
     const zipToGeo = `${CONSTANTS.urls.zipToGeo.url}${zipcode}`;
     const zipToGeoHeader = this.generateHeader(CONSTANTS.urls.zipToGeo.headers);
 
-    this.http.get(zipToGeo, zipToGeoHeader).subscribe((geographicResponse: any) => {
+    try {
+      this.http.get(zipToGeo, zipToGeoHeader).subscribe((geographicResponse: any) => {
         this.getWeatherAPIData(geographicResponse);
       });
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   private getWeatherAPIData(geographicInfo: GeographicInfo): void {
@@ -33,15 +38,19 @@ export class WeatherService {
     const weatherEndpointHeader = this.generateHeader(CONSTANTS.urls.weatherEndpoint.headers);
 
     this.http.get(weatherEndpointUrl, weatherEndpointHeader).subscribe((weatherApiResponse: any) => {
-        const weatherProperties = weatherApiResponse.properties;
-        this.weatherApi.forecast = weatherProperties.forecast;
-        this.weatherApi.hourlyForecast = weatherProperties.forecastHourly;
-        this.location = `${weatherProperties.relativeLocation.properties.city}, ${weatherProperties.relativeLocation.properties.state}`;
+      const weatherProperties = weatherApiResponse.properties;
+      this.weatherApi.forecast = weatherProperties.forecast;
+      this.weatherApi.hourlyForecast = weatherProperties.forecastHourly;
+      this.location = `${weatherProperties.relativeLocation.properties.city}, ${weatherProperties.relativeLocation.properties.state}`;
 
+      try {
         this.http.get(this.weatherApi.forecast).subscribe((response: any) => {
           this.handleWeatherResponse(response.properties);
         });
-      });
+      } catch (error) {
+        console.log(error);
+      }
+    });
   }
 
   private generateHeader(headerDict: any): any {
@@ -52,6 +61,7 @@ export class WeatherService {
 
   private handleWeatherResponse(properties: any): void {
     this.freshestDataTime = properties.generatedAt;
+    this.isForecastLoaded = true;
     this.forecast = properties.periods;
   }
 

@@ -1,2 +1,7 @@
-<p class="brand-color col-sm-12 location-label">Current Location: {{this.weatherService.location}}</p>
-<app-forecast-detail *ngFor="let forecast of this.weatherService.forecast" [forecast]="forecast"></app-forecast-detail>
+<div class="center">
+    <mat-spinner class="spinner" *ngIf="!this.weatherService.isForecastLoaded"></mat-spinner>
+</div>
+<div class="flex-container">
+    <app-forecast-detail *ngFor="let forecast of this.weatherService.forecast" [forecast]="forecast">
+    </app-forecast-detail>
+</div>

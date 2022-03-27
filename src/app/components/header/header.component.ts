@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { WeatherService } from '../services/weather.service';
-import { CONSTANTS } from '../shared/constants';
+import {  FormGroup } from '@angular/forms';
+import { WeatherService } from '../../services/weather.service';
+import { CONSTANTS } from '../../shared/constants';
 
 @Component({
   selector: 'app-header',
@@ -10,8 +11,9 @@ import { CONSTANTS } from '../shared/constants';
 export class HeaderComponent implements OnInit {
   zipCode = CONSTANTS.defaultLocations.winstonSalem;
   location = '';
+  options: FormGroup;
 
-  constructor(public weatherService: WeatherService) { }
+  constructor(public weatherService: WeatherService) {}
 
   ngOnInit(): void {
     this.getWeather(CONSTANTS.defaultLocations.winstonSalem);

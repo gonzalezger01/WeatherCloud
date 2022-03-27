@@ -1,0 +1,48 @@
+<p>
+  <mat-toolbar color="primary">
+    <span class="weather-cloud-logo">Weather Cloud</span>
+    <span class="spacer"></span>
+    <div class="desktop-display">
+      <a class="link" routerLink="/daily">Daily</a>
+      <a class="link" routerLink="/moon">Moon</a>
+      <a class="link" routerLink="/hourly">Hourly</a>
+      <a class="link" routerLink="/alerts">Alerts</a>
+    </div>
+    <button mat-icon-button class="mobile-display" [matMenuTriggerFor]="menu" aria-label="navigation drop menu">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </mat-toolbar>
+  <mat-toolbar color="primary">
+    <span class="spacer"></span>
+    <div>
+      <span class="brand-color col-sm-12 location-label">{{this.weatherService.location}}</span>
+    </div>
+    <mat-form-field class="zipcode-size" appearance="fill">
+      <mat-label>Zipcode</mat-label>
+      <input id="zipcode" [(ngModel)]="zipCode" matInput (keydown.enter)="getWeather($event.target.value)" type="text">
+    </mat-form-field>
+    <button mat-icon-button (click)="getWeather(zipCode)" aria-label="submit zip code">
+      <mat-icon>send</mat-icon>
+    </button>
+  </mat-toolbar>
+</p>
+
+<mat-menu #menu="matMenu">
+  <button mat-menu-item routerLink="/daily">
+    <mat-icon>read_more</mat-icon>
+    <span>Detailed Weather</span>
+  </button>
+  <button mat-menu-item routerLink="/moon">
+    <mat-icon><span class="material-icons">
+        nights_stay</span></mat-icon>
+    <span>Moon</span>
+  </button>
+  <button mat-menu-item routerLink="/hourly">
+    <mat-icon>access_time_filled</mat-icon>
+    <span>Hourly</span>
+  </button>
+  <button mat-menu-item routerLink="/alerts">
+    <mat-icon>warning</mat-icon>
+    <span>Alerts</span>
+  </button>
+</mat-menu>

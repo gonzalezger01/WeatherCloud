@@ -1,0 +1,52 @@
+.brand-color{
+    color: var(--white);
+}
+
+.weather-cloud-logo {
+    font-size: 1.7em;
+    padding: .5em
+}
+
+@media only screen and (min-width: 993px){
+    .brand-logo{
+        margin-left: 2em;
+    }
+}
+
+@media only screen and (min-width: 700px){
+    .desktop-display {
+        display: block;
+    }
+
+    .mobile-display {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 699px){
+    .desktop-display {
+        display: none;
+    }
+
+    .mobile-display {
+        display: block;
+    }
+}
+
+.spacer {
+    flex: 1 1 auto;
+  }
+
+.link {
+    margin: 0 1em;
+    color: white;
+}
+
+.container-color {
+    background-color: inherit;
+    color: inherit;
+}
+
+.zipcode-size {
+    width: 5em;
+}
